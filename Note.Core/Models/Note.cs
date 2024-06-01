@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Note.Core.Models
+namespace NotesApp.Core.Models
 {
     public class Note
     {
