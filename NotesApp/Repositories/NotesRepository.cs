@@ -7,19 +7,19 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace NotesApp.Repositories
 {
-    public class NoteRepository
+    public class NotesRepository : INotesRepository
     {
         private readonly Note_DB_Context _note_DB;
 
-        public NoteRepository(Note_DB_Context note_DB)
+        public NotesRepository(Note_DB_Context note_DB)
         {
             _note_DB = note_DB;
         }
 
-        public async Task <List<Note>> Get()
+        public async Task<List<Note>> Get()
         {
             var noteEntities = await _note_DB.Notes
-                .AsNoTracking() .ToListAsync();
+                .AsNoTracking().ToListAsync();
 
             var notes = noteEntities
                 .Select(n => Note.Create(n.Id, n.Title, n.Description).note)
@@ -29,7 +29,7 @@ namespace NotesApp.Repositories
 
         }
 
-        public async Task<Guid> Create (Note note)
+        public async Task<Guid> Create(Note note)
         {
             var noteEntities = new NoteEntity
             {
@@ -57,6 +57,16 @@ namespace NotesApp.Repositories
             return id;
         }
 
-        
+        public async Task<Guid> Delete(Guid id)
+        {
+            await _note_DB.Notes
+                .Where(n => n.Id == id)
+                .ExecuteDeleteAsync();
+
+
+            return id;
+        }
+
+
     }
 }
