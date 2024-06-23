@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NotesApp.Core.Models;
 using NotesApp.DataAccess;
+using NotesApp.DataAccess.Entities;
+using System.Reflection;
 
 namespace NotesApp.Repositories
 {
@@ -13,7 +15,7 @@ namespace NotesApp.Repositories
             _note_DB = note_DB;
         }
 
-        public async Task <List<Note>> GetNotes()
+        public async Task <List<Note>> Get()
         {
             var noteEntities = await _note_DB.Notes
                 .AsNoTracking() .ToListAsync();
@@ -24,6 +26,23 @@ namespace NotesApp.Repositories
 
             return notes;
 
+        }
+
+        public async Task<Guid> Create (Note note)
+        {
+            var noteEntities = new NoteEntity
+            {
+                Id = note.Id,
+                Title = note.Title,
+                Description = note.Description,
+                isComplete = false
+            };
+
+            await _note_DB.Notes.AddAsync(noteEntities);
+
+            await _note_DB.SaveChangesAsync();
+
+            return noteEntities.Id;
         }
     }
 }
