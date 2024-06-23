@@ -3,6 +3,7 @@ using NotesApp.Core.Models;
 using NotesApp.DataAccess;
 using NotesApp.DataAccess.Entities;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 
 namespace NotesApp.Repositories
 {
@@ -44,5 +45,18 @@ namespace NotesApp.Repositories
 
             return noteEntities.Id;
         }
+
+        public async Task<Guid> Update(Guid id, string title, string description)
+        {
+            await _note_DB.Notes
+                .Where(n => n.Id == id)
+                 .ExecuteUpdateAsync(s => s
+                 .SetProperty(n => n.Title, n => title)
+                 .SetProperty(n => n.Description, n => description));
+
+            return id;
+        }
+
+        
     }
 }
