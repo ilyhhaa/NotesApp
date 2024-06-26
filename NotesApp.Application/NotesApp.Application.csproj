@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Note.Core\NotesApp.Core.csproj" />
+    <ProjectReference Include="..\Note.DataAccess\NotesApp.DataAccess.csproj" />
+    <ProjectReference Include="..\NotesApp\NotesApp.csproj" />
+  </ItemGroup>
+</Project>

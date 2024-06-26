@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Note.DataAccess\NotesApp.DataAccess.csproj" />
+
   </ItemGroup>
 
 </Project>
