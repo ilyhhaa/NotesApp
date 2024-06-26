@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp", "NotesApp\NotesApp.csproj", "{D68B21E8-3F06-42DB-820D-36BD3D1E3D12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B3372514-069F-4B35-9EE9-A6BB3C9D4668} = {B3372514-069F-4B35-9EE9-A6BB3C9D4668}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Core", "Note.Core\NotesApp.Core.csproj", "{B3372514-069F-4B35-9EE9-A6BB3C9D4668}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.DataAccess", "Note.DataAccess\NotesApp.DataAccess.csproj", "{0BC28414-2018-4D8D-B8B6-3C32CCDCD4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Application", "NotesApp.Application\NotesApp.Application.csproj", "{F65A0130-B7FF-489B-8E45-9AEC68C1CA43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Application", "NotesApp.Application\NotesApp.Application.csproj", "{F65A0130-B7FF-489B-8E45-9AEC68C1CA43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

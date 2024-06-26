@@ -1,18 +1,23 @@
 using Microsoft.EntityFrameworkCore;
+using NotesApp.Application.Services;
 using NotesApp.DataAccess;
+using NotesApp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<Note_DB_Context>(options =>
+    options.UseSqlServer(connectionString));
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<Note_DB_Context>(options=>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(Note_DB_Context)));
-});
+
+builder.Services.AddScoped<INotesRepository, NotesRepository>();
+builder.Services.AddScoped<INotesService, NotesService>();
 
 
 var app = builder.Build();
