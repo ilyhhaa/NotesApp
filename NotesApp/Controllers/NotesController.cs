@@ -27,6 +27,22 @@ namespace NotesApp.Controllers
             return Ok(response);
         }
 
+        [HttpPost]
+
+        public async Task <ActionResult<Guid>> CreateNote([FromBody]NoteRequest request)
+        {
+            var (note, error) = Note.Create(Guid.NewGuid(), request.title, request.description);
+
+            if (!string.IsNullOrEmpty(error)) 
+            {
+                return BadRequest(error);
+            }
+
+            var noteid = await _notesService.CreateNote(note);
+
+            return Ok(noteid);    
+        }
+
 
     }
 }
