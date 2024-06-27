@@ -18,8 +18,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<INotesRepository, NotesRepository>();
 builder.Services.AddScoped<INotesService, NotesService>();
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
