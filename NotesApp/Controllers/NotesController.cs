@@ -43,6 +43,22 @@ namespace NotesApp.Controllers
             return Ok(noteid);    
         }
 
+        [HttpPut("{id:guid}")]
+
+        public async Task <ActionResult<Guid>> UpdateNote(Guid id, [FromBody]NoteRequest request)
+        {
+           var noteid =  await _notesService.UpdateNote(id,request.title,request.description);
+
+            return Ok(noteid);
+        }
+
+        [HttpDelete("{id:guid}")]
+
+        public async Task <ActionResult<Guid>> DeleteNote(Guid id)
+        {
+            return Ok(await _notesService.DeleteNote(id));
+        }
+
 
     }
 }
