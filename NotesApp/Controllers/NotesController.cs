@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NotesApp.Application.Services;
+using NotesApp.Contracts;
 using NotesApp.Core.Models;
 
 namespace NotesApp.Controllers
@@ -17,9 +18,13 @@ namespace NotesApp.Controllers
 
         [HttpGet]
 
-        public async Task <ActionResult<List<NotesResponse>>> Get()
+        public async Task <ActionResult<List<NoteResponse>>> Get()
         {
-           return await _notesService.GetAllNotes();
+            var notes = await _notesService.GetAllNotes();
+
+            var response = notes.Select(n => new NoteResponse(n.Id, n.Title, n.Description));
+
+            return Ok(response);
         }
 
 

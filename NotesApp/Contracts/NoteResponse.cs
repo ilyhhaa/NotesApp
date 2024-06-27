@@ -1,6 +1,8 @@
 ﻿namespace NotesApp.Contracts
 {
-    public class NoteResponse
-    {
-    }
+    public record NoteResponse(
+        Guid id,
+        string title,
+        string description);
+   
 }
