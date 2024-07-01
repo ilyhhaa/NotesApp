@@ -1,7 +1,7 @@
 
 import { Layout, Menu } from "antd";
 import "./globals.css";
-import { Header } from "antd/es/layout/layout";
+import { Content, Footer, Header } from "antd/es/layout/layout";
 import Link from "next/link";
 
 const items = [
@@ -24,7 +24,12 @@ export default function RootLayout({
                           items={items}
                           style={{ flex: 1, minWidth: 0 }} />
 
-                  </Header> {children}</Layout>
+                  </Header>
+                  <Content style={{ padding: "0 48px" }}>{children}</Content>
+                  <Footer style={{ textAlign: "center" }}>
+                  Note App for portfolio by Ilya Kunitski
+                  </Footer>
+                  </Layout>
               </body>
     </html>
   );
