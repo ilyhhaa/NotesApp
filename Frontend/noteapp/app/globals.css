@@ -7,7 +7,7 @@ body {
 }
 
 /* Container for Notes */
-.noteses-container {
+.cards-container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
@@ -17,7 +17,7 @@ body {
 }
 
 /* Note Item */
-.notes {
+.card {
     padding: 15px;
     margin-bottom: 15px;
     border-left: 5px solid #007bff;
@@ -26,23 +26,49 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-    .notes:hover {
+    .card:hover {
         transform: scale(1.02);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
 /* Note Title */
-.notes-title {
+.card-title {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #007bff;
 }
 
 /* Note Text */
-.notes-text {
+.card-text {
     font-size: 1em;
     line-height: 1.6;
 }
+
+/* Note Completion Status */
+.card-iscomplete {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+    .card-iscomplete span {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+
+    .card-iscomplete .complete {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .card-iscomplete .incomplete {
+        background-color: #dc3545;
+        color: white;
+    }
 
 /* Buttons */
 .button {
@@ -65,19 +91,28 @@ body {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    .notes-container {
+    .cards-container {
         padding: 15px;
     }
 
-    .notes {
+    .card {
         padding: 10px;
     }
 
-    .notes-title {
+    .card-title {
         font-size: 1.2em;
     }
 
-    .notes-text {
+    .card-text {
         font-size: 0.9em;
     }
+
+    .card-iscomplete {
+        font-size: 0.8em;
+    }
+
+        .card-iscomplete span {
+            padding: 3px 7px;
+            margin-left: 5px;
+        }
 }
