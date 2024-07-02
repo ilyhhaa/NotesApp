@@ -10,7 +10,9 @@ export const CardTitle = ({ title, iscomplete }: Props) => {
 		alignItems: "center",
 		justifyContent:"space-between"
 	}} >
+
 		<p className="card_title">{title}</p>
+
 		<p className="card_iscomplete">{iscomplete}</p>
 	</ div>)
 }
