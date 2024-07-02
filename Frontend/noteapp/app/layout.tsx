@@ -25,11 +25,15 @@ export default function RootLayout({
                           style={{ flex: 1, minWidth: 0 }} />
 
                   </Header>
+
                   <Content style={{ padding: "0 48px" }}>{children}</Content>
+
                   <Footer style={{ textAlign: "center" }}>
                   Note App for portfolio by Ilya Kunitski
+
                   </Footer>
-                  </Layout>
+
+              </Layout>
               </body>
     </html>
   );
