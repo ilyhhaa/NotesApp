@@ -8,32 +8,38 @@ interface Props {
 
 
 export const Notes = ({ notes }: Props) => {
-
-    <div className="cards">
-        {notes.map((note: Note) => (
-
-
-            <Card
-                key={note.id} title={<CardTitle title={note.title} iscomplete={note.iscomplete} />}
-                bordered={false}
-
-            >
-                <p>{note.description}</p>
-                <div className="button">
-                    <Button>
-                    Edit
-                    </Button>
-
-                    <Button>Delete</Button>
-                </div>
-
-            </Card>
+    return (
+        <div className="cards">
+            {notes.map((note: Note) => (
 
 
-        ))}</div>
+                <Card
+                    key={note.id}
+                    title={<CardTitle title={note.title}
+
+                        iscomplete={note.iscomplete} />}
+                    bordered={false}
+
+                >
+                    <p>{note.description}</p>
+                    <div className="button">
+                        <Button>
+                            Edit
+                        </Button>
+
+                        <Button>Delete</Button>
+                    </div>
+
+                </Card>
+
+
+            ))}
+        </div>
+
+    );
 
 
 
 
 
-}
+};

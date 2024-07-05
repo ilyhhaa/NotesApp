@@ -6,6 +6,7 @@ import { Notes } from "../components/Notes";
 import { useEffect, useState } from "react";
 import { getAllNotes } from "../services/notes";
 
+
 export default function NotesPage() {
     const [notes, setNotes] = useState<Note[]>([]);
     const [loading, setLoading] = useState(true);
@@ -14,17 +15,18 @@ export default function NotesPage() {
         const getNotes = async () => {
             const notes = await getAllNotes();
             setLoading(false);
-            setNotes(notes)
+            setNotes(notes);
         }
         getNotes();
-    }, [])
+    }, []);
+
     return (
         <div>
             <Button>
             Add Note
             </Button>
 
-            <Notes notes={notes } />
+            <Notes notes={notes} />
         </div>
 )
 }
