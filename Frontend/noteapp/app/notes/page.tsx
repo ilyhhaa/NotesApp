@@ -5,6 +5,7 @@ import Button from "antd/es/button/button"
 import { Notes } from "../components/Notes";
 import { useEffect, useState } from "react";
 import { getAllNotes } from "../services/notes";
+import Title from "antd/es/skeleton/Title";
 
 
 export default function NotesPage() {
@@ -25,8 +26,8 @@ export default function NotesPage() {
             <Button>
             Add Note
             </Button>
-
-            <Notes notes={notes} />
+            {loading ? (<Title>Loading....</Title>) : <Notes notes={notes}/>};
+            
         </div>
 )
 }
