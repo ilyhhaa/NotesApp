@@ -1,12 +1,11 @@
 import { Input, Modal } from "antd";
 import { NoteRequest } from "../services/notes";
-import { title } from "process";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
 
 interface Props {
     mode: Mode;
-    values: Note[];
+    values: Note;
     IsModalIsOpen: boolean;
     handleCancel: () => void;
     handleCreate: (request: NoteRequest) => void;
@@ -30,8 +29,18 @@ export const CreateUpdateNote = ({
     const [isComplete, setComplete] = useState<boolean>(false);
 
 
-    const handleOk = async () => {
-        const noteRequest = {title,description,isComplete}
+    useEffect(() => {
+        setTitle(values.title)
+        setDescription(values.description)
+        setComplete(values.iscomplete)
+    },[values])
+
+
+    const handleOnOk = async () => {
+        const noteRequest = { title, description, isComplete }
+
+        mode == Mode.Create ? handleCreate(noteRequest) :
+            handleUpdate(values.id, noteRequest)
     }
 
 
@@ -41,7 +50,13 @@ export const CreateUpdateNote = ({
     return (
         <Modal title={mode === Mode.Create ? "Add Note" : "Edit Note"}
             open={IsModalIsOpen}
-            cancelText={"Cancel"}>
+            cancelText={"Cancel"}
+            onOk={handleOnOk}
+            onCancel={handleCancel}
+
+
+        >
+
 
             <div className="note__modal">
                 <Input
