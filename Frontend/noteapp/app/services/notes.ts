@@ -5,13 +5,13 @@ export interface NoteRequest {
 }
 
 export const getAllNotes = async () => {
-    const response = await fetch("https://localhost:7130/Notes")
+    const response = await fetch("http://localhost:7130/Notes")
 
     return response.json();
 };
 
 export const createNote = async (noterequest: NoteRequest) => {
-    await fetch("https://localhost:7130/Notes", {
+    await fetch("http://localhost:7130/Notes", {
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -21,7 +21,7 @@ export const createNote = async (noterequest: NoteRequest) => {
 };
 
 export const updateNote = async (id: string, noterequest: NoteRequest) => {
-    await fetch(`https://localhost:7130/notes/${id}`, {
+    await fetch(`http://localhost:7130/notes/${id}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json",
@@ -31,7 +31,7 @@ export const updateNote = async (id: string, noterequest: NoteRequest) => {
 };
 
 export const deleteNote = async (id: string) => {
-    await fetch(`https://localhost:7130/notes/${id}`, {
+    await fetch(`http://localhost:7130/notes/${id}`, {
         method: "DELETE",
     });
 };

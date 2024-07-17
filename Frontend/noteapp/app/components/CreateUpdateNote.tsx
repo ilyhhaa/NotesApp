@@ -73,7 +73,7 @@ export const CreateUpdateNote = ({
                     placeholder="Description" />
 
                 <Input
-                    value={isComplete}
+                    value={iscomplete}
                     onChange={(e) => setComplete(Boolean(e.target.value))}
                     placeholder= "Status"/>
                     
