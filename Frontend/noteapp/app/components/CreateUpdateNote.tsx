@@ -26,7 +26,7 @@ export const CreateUpdateNote = ({
     handleUpdate }: Props) => {
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [isComplete, setComplete] = useState<boolean>(false);
+    const [iscomplete, setComplete] = useState<boolean>(false);
 
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export const CreateUpdateNote = ({
 
 
     const handleOnOk = async () => {
-        const noteRequest = { title, description, isComplete }
+        const noteRequest = { title, description, iscomplete }
 
         mode == Mode.Create ? handleCreate(noteRequest) :
             handleUpdate(values.id, noteRequest)
