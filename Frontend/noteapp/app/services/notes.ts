@@ -21,7 +21,7 @@ export const createNote = async (noterequest: NoteRequest) => {
 };
 
 export const updateNote = async (id: string, noterequest: NoteRequest) => {
-    await fetch(`https://localhost:7130/Notes/${id}`, {
+    await fetch(`https://localhost:7130/notes/${id}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json",
@@ -31,7 +31,7 @@ export const updateNote = async (id: string, noterequest: NoteRequest) => {
 };
 
 export const deleteNote = async (id: string) => {
-    await fetch(`https://localhost:7130/Notes/${id}`, {
+    await fetch(`https://localhost:7130/notes/${id}`, {
         method: "DELETE",
     });
 };

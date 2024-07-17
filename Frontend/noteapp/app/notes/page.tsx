@@ -4,18 +4,22 @@
 import Button from "antd/es/button/button"
 import { Notes } from "../components/Notes";
 import { useEffect, useState } from "react";
-import { NoteRequest, createNote, getAllNotes, updateNote } from "../services/notes";
+import { NoteRequest, createNote, deleteNote, getAllNotes, updateNote } from "../services/notes";
 import Title from "antd/es/skeleton/Title";
 import { CreateUpdateNote, Mode } from "../components/CreateUpdateNote";
-import { request } from "http";
+
 
 
 export default function NotesPage() {
-    const [values, setvalues] = useState<Note>({
+
+    const defaultValues = {
         title: "",
         description: "",
-        iscomplete:false,
-    } as Note);
+        iscomplete: false,
+    } as Note;
+    
+    const [values, setvalues] = useState<Note>(defaultValues);
+        
     
 
     const [note, setNotes] = useState<Note[]>([]);
@@ -42,7 +46,7 @@ export default function NotesPage() {
         setNotes(notes);
     }
 
-    const handleUpdateNote = async (id: string, request: NoteRequest){
+    const handleUpdateNote = async (id: string, request: NoteRequest)=>{
         await updateNote(id, request);
         closeModal();
 
@@ -52,16 +56,32 @@ export default function NotesPage() {
     }
 
 
+    const handleDeleteNote = async (id: string) => {
+        await deleteNote(id);
+        closeModal();
+
+
+        const notes = await getAllNotes();
+        setNotes(notes);
+    }
 
 
     const openModal = () => {
+        SetMode(Mode.Create);
         setIsModalOpen(true);
     };
 
     const closeModal = () => {
+        setvalues(defaultValues);
         setIsModalOpen(false);
+
     };
 
+    const openEditModal = (note: Note) => {
+        SetMode(Mode.Edit);
+        setvalues(note);
+        setIsModalOpen(true);
+    }
 
     return (
         <div>
@@ -69,9 +89,14 @@ export default function NotesPage() {
             Add Note
             </Button>
 
-            <CreateUpdateNote ></CreateUpdateNote>
+            <CreateUpdateNote mode={mode}
+                values={values}
+                IsModalIsOpen={isModalOpen}
+                handleCreate={handleCreateNote}
+                handleUpdate={handleUpdateNote}
+                handleCancel={closeModal} />
 
-            {loading ? (<Title>Loading....</Title>) : <Notes notes={notes}/>};
+            {loading ? (<Title>Loading....</Title>) : <Notes notes={note} handleOpen={openEditModal} handleDelete={handleDeleteNote} />};
             
         </div>
 )

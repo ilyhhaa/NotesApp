@@ -14,27 +14,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-          <body>
-              <Layout style={{ minHeight: "100vh" }}>
-                  <Header>
-                      <Menu theme="dark"
-                          mode="horizontal"
-                          items={items}
-                          style={{ flex: 1, minWidth: 0 }} />
+    return (
+        <html lang="en">
+            <body>
+                <Layout style={{ minHeight: "100vh" }}>
+                    <Header>
+                        <Menu theme="dark"
+                            mode="horizontal"
+                            items={items}
+                            style={{ flex: 1, minWidth: 0 }} />
 
-                  </Header>
+                    </Header>
 
-                  <Content style={{ padding: "0 48px" }}>{children}</Content>
+                    <Content style={{ padding: "0 48px" }}>{children}</Content>
 
-                  <Footer style={{ textAlign: "center" }}>
-                  Note App for portfolio by Ilya Kunitski
+                    <Footer style={{ textAlign: "center" }}>
+                        Note App for portfolio by Ilya Kunitski
 
-                  </Footer>
+                    </Footer>
 
-              </Layout>
-              </body>
-    </html>
-  );
+                </Layout>
+            </body>
+        </html>
+    );
 }
