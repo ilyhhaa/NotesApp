@@ -96,7 +96,7 @@ export default function NotesPage() {
                 handleUpdate={handleUpdateNote}
                 handleCancel={closeModal} />
 
-            {loading ? (<Title>Loading....</Title>) : <Notes notes={note} handleOpen={openEditModal} handleDelete={handleDeleteNote} />};
+            {loading ? (<Title>Loading....</Title>) : <Notes notes={note} handleOpen={openEditModal} handleDelete={handleDeleteNote} />}
             
         </div>
 )
