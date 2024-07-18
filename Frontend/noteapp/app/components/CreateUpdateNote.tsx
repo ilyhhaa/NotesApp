@@ -1,6 +1,6 @@
 import { Input, Modal } from "antd";
 import { NoteRequest } from "../services/notes";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
 
 interface Props {
@@ -61,20 +61,20 @@ export const CreateUpdateNote = ({
             <div className="note__modal">
                 <Input
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                     placeholder= "Name Your Note"
 
                 />
 
                 <TextArea
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
                     autoSize={{ minRows: 3, maxRows: 3 }}
                     placeholder="Description" />
 
                 <Input
                     value={iscomplete}
-                    onChange={(e) => setComplete(Boolean(e.target.value))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setComplete(Boolean(e.target.value))}
                     placeholder= "Status"/>
                     
             </div>
